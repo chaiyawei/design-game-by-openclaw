@@ -4,10 +4,15 @@ class BootScene extends Phaser.Scene {
     }
 
     preload() {
-        // This is where we will load our assets
         console.log('BootScene: preload');
-        // For now, we'll just show a loading message
-        this.add.text(400, 300, 'Loading assets...', { fontSize: '32px', fill: '#fff' }).setOrigin(0.5);
+        // Create a texture for the player
+        this.make.graphics({ x: 0, y: 0, add: false }).fillStyle(0xffffff).fillRect(0, 0, 50, 50).generateTexture('player', 50, 50);
+
+        // Create a texture for the enemy
+        this.make.graphics({ x: 0, y: 0, add: false }).fillStyle(0xff0000).fillRect(0, 0, 50, 50).generateTexture('enemy', 50, 50);
+
+        // Create a texture for the player's projectile
+        this.make.graphics({ x: 0, y: 0, add: false }).fillStyle(0x00ff00).fillCircle(5, 5, 5).generateTexture('bullet', 10, 10);
     }
 
     create() {
